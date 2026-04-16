@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# ReactJS Workshop1 (Components & Props) - Interactive Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Goal
 
-Currently, two official plugins are available:
+A modern e-commerce UI by converting a static HTML layout into a fully component-based React application using:
+* React
+* Vite
+* TypeScript
+* Tailwind CSS
+* lucide-react
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The focus is on component-based architecture, reusability, and clean frontend practices.
 
-## React Compiler
+---
+## Components and Purposes
+* Header 
+  * Contains the logo, navigation bar, and top-level actions.
+* NavBar
+  * Displays navigation links dynamically using props.
+* Sidebar
+  * Acts as a container for filters (categories, etc.).
+* SidebarCategories
+  * Renders category filters with checkbox selection logic.
+* ProductSection
+  * Main container that combines product header, grid, and pagination.
+* ProductHeader
+  * Displays the section title and sorting options.
+* ProductGrid
+  * Maps through product data and renders multiple ProductCard components.
+* ProductCard
+  * Displays individual product details such as image, category, price, and etc.
+* Pagination
+  * Handles navigation between pages (UI structure).
+* Footer
+  * Displays footer layout and organizes link sections.
+* FooterLinksColumn
+  * Reusable component for rendering grouped links with optional icons.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
+## Props Passed Between Components
+* NavBar 
+  * items → array of navigation links 
+* SidebarCategories
+  * items → category list with name and count
+* ProductGrid
+  * products → array of product objects
+* ProductCard
+  * image, name, category, rating, price, etc.
+* FooterLinksColumn
+  * title → section title 
+  * links → array of links (with optional icons)
 
-## Expanding the ESLint configuration
+---
+## Why Props Were Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Props are used to:
+* Pass dynamic data into reusable components
+* Avoid hardcoding UI content
+* Improve flexibility and scalability
+* Allow components to be reused with different data
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This makes the application more maintainable and closer to real-world React architecture.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
+## How Components Work Together
+1. App acts as the root component.
+2. Header, Sidebar, ProductSection, and Footer are rendered inside it.
+3. Sidebar manages filter UI (categories).
+4. ProductSection organizes:
+	* ProductHeader (title/sort)
+	* ProductGrid (list of products)
+	* Pagination
+5. ProductGrid maps product data and renders multiple ProductCard components.
+6. Footer uses FooterLinksColumn to render structured link sections.
+7. Props flow from parent → child to dynamically render UI.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+## Screenshot
+![App Screenshot](./Screenshot.png)
