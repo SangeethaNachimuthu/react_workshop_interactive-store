@@ -1,6 +1,9 @@
+import type {LucideIcon} from "lucide-react";
+
 type Link = {
     label: string;
     href: string;
+    icon?: LucideIcon;
 }
 type LinkProps = {
     links: Link[];
@@ -14,15 +17,19 @@ const FooterLinksColumn = ({links, title}: LinkProps) => {
                 {title}
             </h4>
             <ul className="space-y-4 text-sm font-bold text-slate-500">
-                {links.map((link) => (
-                    <li>
-                        <a href={link.href}
-                           className="transition-colors hover:text-blue-600"
-                        >
-                            {link.label}
-                        </a>
-                    </li>
-                ))}
+                {links.map( (link) => {
+                    const Icon = link.icon;
+                    return (
+                        <li>
+                            <a href={link.href}
+                               className="flex items-center transition-colors hover:text-blue-600"
+                            >
+                                {Icon && <Icon size={14} className="mr-2" />}
+                                {link.label}
+                            </a>
+                        </li>
+                    )
+                } ) }
             </ul>
         </div>
     );

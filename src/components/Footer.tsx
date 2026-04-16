@@ -1,9 +1,11 @@
 import FooterLinksColumn from "./FooterLinksColumn.tsx";
-import {Package} from "lucide-react";
+import {Briefcase, Info, Leaf, Package, Phone} from "lucide-react";
+import type {LucideIcon} from "lucide-react";
 
 type Link = {
     label: string;
     href: string;
+    icon?: LucideIcon;
 };
 const shopLinks: Link[] = [
     {label: "New Arrival", href: "#"},
@@ -18,10 +20,10 @@ const supportLinks: Link[] = [
     {label: "FAQs", href: "#"},
 ];
 const companyLinks: Link[] = [
-    {label: "About Us", href: "#"},
-    {label: "Sustainability", href: "#"},
-    {label: "Careers", href: "#"},
-    {label: "Contact", href: "#"},
+    {label: "About Us", href: "#", icon: Info},
+    {label: "Sustainability", href: "#", icon: Leaf},
+    {label: "Careers", href: "#", icon: Briefcase},
+    {label: "Contact", href: "#", icon: Phone},
 ];
 
 const Footer = () => {
