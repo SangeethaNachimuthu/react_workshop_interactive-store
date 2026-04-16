@@ -1,3 +1,27 @@
+import FooterLinksColumn from "./FooterLinksColumn.tsx";
+
+type Link = {
+    label: string;
+    href: string;
+};
+const shopLinks: Link[] = [
+    {label: "New Arrival", href: "#"},
+    {label: "Best Sellers", href: "#"},
+    {label: "Men Collection", href: "#"},
+    {label: "Women Collection", href: "#"},
+];
+const supportLinks: Link[] = [
+    {label: "Order Status", href: "#"},
+    {label: "Shipping Policy", href: "#"},
+    {label: "Returns & Exchanges", href: "#"},
+    {label: "FAQs", href: "#"},
+];
+const companyLinks: Link[] = [
+    {label: "About Us", href: "#"},
+    {label: "Sustainability", href: "#"},
+    {label: "Careers", href: "#"},
+    {label: "Contact", href: "#"},
+];
 
 const Footer = () => {
     return (
@@ -47,46 +71,11 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/** Links Column 1 **/}
-                    <div className="space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900">Shop</h4>
-                        <ul className="space-y-4 text-sm font-bold text-slate-500">
-                            <li><a href="#" className="transition-colors hover:text-blue-600">New Arrival</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Best Sellers</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Men Collection</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Women Collection</a></li>
-                        </ul>
-                    </div>
+                    {/** Links Columns **/}
+                    <FooterLinksColumn links={shopLinks} title={"Shop"} />
+                    <FooterLinksColumn links={supportLinks} title={"Support"} />
+                    <FooterLinksColumn links={companyLinks} title={"Company"} />
 
-                    {/** Links Column 2 **/}
-                    <div className="space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900">Support</h4>
-                        <ul className="space-y-4 text-sm font-bold text-slate-500">
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Order Status</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Shipping Policy</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">Returns & Exchanges</a></li>
-                            <li><a href="#" className="transition-colors hover:text-blue-600">FAQs</a></li>
-                        </ul>
-                    </div>
-
-                    {/** Links Column 3 **/}
-                    <div className="space-y-6">
-                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900">Company</h4>
-                        <ul className="space-y-4 text-sm font-bold text-slate-500">
-                            <li>
-                                <a href="#" className="transition-colors hover:text-blue-600">About Us</a>
-                            </li>
-                            <li>
-                                <a href="#" className="transition-colors hover:text-blue-600">Sustainability</a>
-                            </li>
-                            <li>
-                                <a href="#" className="transition-colors hover:text-blue-600">Careers</a>
-                            </li>
-                            <li>
-                                <a href="#" className="transition-colors hover:text-blue-600">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
 
                 <div
