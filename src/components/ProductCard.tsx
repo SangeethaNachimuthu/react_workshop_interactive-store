@@ -1,3 +1,5 @@
+import {Eye, Heart, Plus, Star} from "lucide-react";
+
 type ProductCardProps = {
     image: string;
     category: string;
@@ -28,25 +30,17 @@ const ProductCard = (props : ProductCardProps) => {
                             className="h-12 w-12 rounded-full bg-white text-slate-900 shadow-xl
                                  flex items-center justify-center translate-y-4 group-hover:translate-y-0
                                  transition-transform duration-500 hover:bg-blue-600 hover:text-white"
-                            aria-label="Quick View">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round">
-                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                            <circle cx="12" cy="12" r="3"/>
-                        </svg>
+                            aria-label="Quick View"
+                    >
+                        <Eye size={20} />
                     </button>
                     <button type="button"
                             className="h-12 w-12 rounded-full bg-white text-slate-900 shadow-xl
                                 flex items-center justify-center translate-y-4 group-hover:translate-y-0
                                 transition-transform duration-500 delay-75 hover:bg-blue-600 hover:text-white"
-                            aria-label="Add to cart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                             stroke-linejoin="round">
-                            <path d="M5 12h14"/>
-                            <path d="M12 5v14"/>
-                        </svg>
+                            aria-label="Add to cart"
+                    >
+                        <Plus size={20} />
                     </button>
                 </div>
 
@@ -62,14 +56,9 @@ const ProductCard = (props : ProductCardProps) => {
                             rounded-xl border border-slate-200/50 bg-white/70 text-slate-600
                             backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-rose-500
                             hover:shadow-lg group/heart"
-                        aria-label="Add to favorites" title="Favorite">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round"
-                         className="transition-colors group-hover/heart:fill-rose-500 group-hover/heart:stroke-rose-500">
-                        <path
-                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                    </svg>
+                        aria-label="Add to favorites" title="Favorite"
+                >
+                    <Heart size={20} className="transition-colors group-hover/heart:fill-rose-500 group-hover/heart:stroke-rose-500"/>
                 </button>
             </div>
 
@@ -79,11 +68,7 @@ const ProductCard = (props : ProductCardProps) => {
                         {props.category}
                     </p>
                     <div className="flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"
-                             fill="currentColor" className="text-amber-400">
-                            <path
-                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                        <Star size={9} className="text-amber-400" fill="currentColor"/>
                         <span className="text-[10px] font-bold text-slate-400">
                             {props.rating}
                         </span>
