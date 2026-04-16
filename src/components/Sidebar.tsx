@@ -1,3 +1,15 @@
+import SidebarCategories from "./SidebarCategories.tsx";
+
+type CategoryItem = {
+    name: string;
+    count: number;
+}
+const items: CategoryItem[] = [
+    {name: "All Products", count: 124},
+    {name: "Outerwear", count: 42},
+    {name: "Footwear", count: 18},
+    {name: "Accessories", count: 64},
+]
 
 const Sidebar = () => {
     return (
@@ -17,44 +29,7 @@ const Sidebar = () => {
                         </button>
                     </div>
 
-                    <div className="space-y-3">
-                        <label className="flex items-center gap-3 cursor-pointer select-none">
-                            <input type="checkbox" value="all"
-                                   className="category-filter h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"
-                                   checked/>
-                            <span className="flex-1 text-sm text-slate-700">
-                                All Products
-                                <span className="text-slate-400 font-normal">(124)</span>
-                            </span>
-                        </label>
-
-                        <label className="flex items-center gap-3 cursor-pointer select-none">
-                            <input type="checkbox" value="Outerwear"
-                                   className="category-filter h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
-                            <span className="flex-1 text-sm text-slate-700 font-medium">
-                                Outerwear
-                                <span className="text-slate-400 font-normal">(42)</span>
-                            </span>
-                        </label>
-
-                        <label className="flex items-center gap-3 cursor-pointer select-none">
-                            <input type="checkbox" value="Footwear"
-                                   className="category-filter h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
-                            <span className="flex-1 text-sm text-slate-700 font-medium">
-                                Footwear
-                                <span className="text-slate-400 font-normal">(18)</span>
-                            </span>
-                        </label>
-
-                        <label className="flex items-center gap-3 cursor-pointer select-none">
-                            <input type="checkbox" value="Accessories"
-                                   className="category-filter h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
-                            <span className="flex-1 text-sm text-slate-700 font-medium">
-                                Accessories
-                                <span className="text-slate-400 font-normal">(64)</span>
-                            </span>
-                        </label>
-                    </div>
+                    <SidebarCategories items={items} />
                 </section>
 
                 <div className="my-5 h-px bg-slate-100"></div>
@@ -87,13 +62,13 @@ const Sidebar = () => {
                     <div className="space-y-3">
                         <label className="flex items-center gap-3 cursor-pointer select-none">
                             <input type="checkbox"
-                                   className="h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
+                                   className="h-4.5 w-4.5 rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
                             <span className="flex-1 text-sm text-slate-700">In Stock</span>
                         </label>
 
                         <label className="flex items-center gap-3 cursor-pointer select-none">
                             <input type="checkbox"
-                                   className="h-[1.125rem] w-[1.125rem] rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
+                                   className="h-4.5 w-4.5 rounded-md border border-slate-200 accent-blue-600 cursor-pointer"/>
                             <span className="flex-1 text-sm text-slate-700">On Sale</span>
                         </label>
                     </div>
