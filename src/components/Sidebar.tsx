@@ -1,4 +1,5 @@
 import SidebarCategories from "./SidebarCategories.tsx";
+import {ChevronDown} from "lucide-react";
 
 type CategoryItem = {
     name: string;
@@ -21,11 +22,12 @@ const Sidebar = () => {
                     <div className="flex items-center justify-between">
                         <h2 id="filters-categories" className="text-sm font-bold text-slate-900">Categories</h2>
                         <button type="button" className="lg:hidden text-slate-400 hover:text-blue-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                            {/** <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round">
                                 <path d="m6 9 6 6 6-6"/>
-                            </svg>
+                            </svg> **/}
+                            <ChevronDown size={20} />
                         </button>
                     </div>
 
