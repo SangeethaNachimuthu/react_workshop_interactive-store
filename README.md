@@ -15,17 +15,11 @@ The focus is on component-based architecture, reusability, and clean frontend pr
 ## Components and Purposes
 * Header 
   * Contains the logo, navigation bar, and top-level actions.
-* NavBar
-  * Displays navigation links dynamically using props.
 * Sidebar
   * Acts as a container for filters (categories, etc.).
-* SidebarCategories
-  * Renders category filters with checkbox selection logic.
 * ProductSection
   * Main container that combines product header, grid, and pagination.
-* ProductHeader
-  * Displays the section title and sorting options.
-* ProductGrid
+* ProductList
   * Maps through product data and renders multiple ProductCard components.
 * ProductCard
   * Displays individual product details such as image, category, price, and etc.
@@ -38,11 +32,11 @@ The focus is on component-based architecture, reusability, and clean frontend pr
 
 ---
 ## Props Passed Between Components
-* NavBar 
+* Navigation bar 
   * items → array of navigation links 
-* SidebarCategories
+* Sidebar Categories
   * items → category list with name and count
-* ProductGrid
+* ProductList
   * products → array of product objects
 * ProductCard
   * image, name, category, rating, price, etc.
@@ -67,10 +61,9 @@ This makes the application more maintainable and closer to real-world React arch
 2. Header, Sidebar, ProductSection, and Footer are rendered inside it.
 3. Sidebar manages filter UI (categories).
 4. ProductSection organizes:
-	* ProductHeader (title/sort)
-	* ProductGrid (list of products)
+	* ProductList (list of products)
 	* Pagination
-5. ProductGrid maps product data and renders multiple ProductCard components.
+5. ProductList maps product data and renders multiple ProductCard components.
 6. Footer uses FooterLinksColumn to render structured link sections.
 7. Props flow from parent → child to dynamically render UI.
 

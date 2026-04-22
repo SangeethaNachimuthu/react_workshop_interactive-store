@@ -1,5 +1,5 @@
-import SidebarCategories from "./SidebarCategories.tsx";
 import {ChevronDown} from "lucide-react";
+import {useState} from "react";
 
 type CategoryItem = {
     name: string;
@@ -13,6 +13,13 @@ const items: CategoryItem[] = [
 ]
 
 const Sidebar = () => {
+
+    const [selected, setSelected] = useState<string>(items[0]?.name);
+
+    const handleChange = (category : string) => {
+        setSelected(category);
+    };
+
     return (
         <aside className="lg:col-span-3 lg:sticky lg:top-20 self-start">
             <div
@@ -31,7 +38,26 @@ const Sidebar = () => {
                         </button>
                     </div>
 
-                    <SidebarCategories items={items} />
+                    {/** <SidebarCategories items={items} /> **/}
+                    <div className="space-y-3">
+                        {items.map((item => {
+                            return (
+                                <label className="flex items-center gap-3 cursor-pointer select-none">
+                                    <input type="checkbox" value="all"
+                                           className="category-filter h-4.5 w-4.5 rounded-md border border-slate-200 accent-blue-600 cursor-pointer"
+                                           checked={selected === item.name}
+                                           onChange={() => handleChange(item.name)}
+                                    />
+                                    <span className="flex-1 text-sm text-slate-700">
+                                {item.name}
+                                        <span className="text-slate-400 font-normal">
+                                    ({item.count})
+                                </span>
+                            </span>
+                                </label>
+                            )
+                        }))}
+                    </div>
                 </section>
 
                 <div className="my-5 h-px bg-slate-100"></div>
@@ -79,7 +105,7 @@ const Sidebar = () => {
                 {/** Promo Card **/}
                 <section className="mt-6">
                     <div
-                        className="rounded-[1.25rem] bg-gradient-to-br from-blue-600 to-amber-500 text-white overflow-hidden relative before:content-[''] before:absolute before:-top-[20%] before:-right-[10%] before:w-[200px] before:h-[200px] before:bg-[radial-gradient(circle,rgba(255,255,255,0.2)_0%,transparent_70%)] before:rounded-full p-6">
+                        className="rounded-[1.25rem] bg-linear-to-br from-blue-600 to-amber-500 text-white overflow-hidden relative before:content-[''] before:absolute before:-top-[20%] before:-right-[10%] before:w-50 before:h-50 before:bg-[radial-gradient(circle,rgba(255,255,255,0.2)_0%,transparent_70%)] before:rounded-full p-6">
                         <h3 className="text-lg font-bold text-white">Summer Sale</h3>
                         <p className="mt-2 text-sm leading-relaxed opacity-90 text-white">
                             Get up to 50% off on all summer collections. Limited time offer!
