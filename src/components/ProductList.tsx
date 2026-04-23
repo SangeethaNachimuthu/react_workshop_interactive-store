@@ -1,11 +1,12 @@
-import type {ProductItem} from "../product.ts";
+import type {FilterState, ProductItem} from "../product.ts";
 import ProductCard from "./ProductCard.tsx";
 
 
-const ProductList = () => {
+const ProductList = ({searchTerm}:FilterState) => {
 
     const productList : ProductItem[] = [
         {
+            id: 1,
             image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=800",
             category: "Outerwear",
             badge: "Discount",
@@ -17,6 +18,7 @@ const ProductList = () => {
             inStock: true
         },
         {
+            id: 2,
             image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800",
             category: "Footwear",
             badge: "Limited",
@@ -27,6 +29,7 @@ const ProductList = () => {
             inStock: true
         },
         {
+            id: 3,
             image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
             category: "Accessories",
             badge: "Sold Out",
@@ -37,6 +40,7 @@ const ProductList = () => {
             inStock: false
         },
         {
+            id: 4,
             image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80&w=800",
             category: "Footwear",
             badge: "Popular",
@@ -47,6 +51,7 @@ const ProductList = () => {
             inStock: true
         },
         {
+            id: 5,
             image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
             category: "Accessories",
             badge: "Hot Deal",
@@ -58,6 +63,7 @@ const ProductList = () => {
             inStock: true
         },
         {
+            id: 6,
             image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800",
             category: "Accessories",
             badge: "New Arrival",
@@ -69,11 +75,24 @@ const ProductList = () => {
         }
     ]
 
+    const filteredProducts = productList.filter((product) => {
+
+        const searchMatches = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+        return searchMatches;
+    })
+
     return (
         <div id="product-grid" className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {productList.map((product, index) => (
-                <ProductCard key = {index} {...product} />
-            ))}
+            {filteredProducts.length === 0 ? (
+                <div className="col-span-full text-center text-slate-500 py-10">
+                    No such products found
+                </div>
+            ) : (
+                filteredProducts.map((product) => (
+                    <ProductCard key = {product.id} {...product} />
+                ))
+            )}
         </div>
     );
 };

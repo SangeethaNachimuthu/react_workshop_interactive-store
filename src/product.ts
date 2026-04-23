@@ -1,4 +1,5 @@
 export type ProductItem = {
+    id: number;
     image: string;
     category: string;
     badge?: string;
@@ -9,3 +10,8 @@ export type ProductItem = {
     finalPrice: string;
     status: string;
 };
+
+export type FilterState = {
+    searchTerm: string;
+    setSearchTerm: (value:string)=> void;
+}
