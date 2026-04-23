@@ -1,5 +1,4 @@
 import {ChevronDown} from "lucide-react";
-import {useState} from "react";
 
 type CategoryItem = {
     name: string;
@@ -12,13 +11,27 @@ const items: CategoryItem[] = [
     {name: "Accessories", count: 64},
 ]
 
-const Sidebar = () => {
+type CategoryProps = {
+    selectedCategory: string[];
+    setSelectedCategory: (value:string[]) => void;
+}
 
-    const [selected, setSelected] = useState<string>(items[0]?.name);
+const Sidebar = ({selectedCategory, setSelectedCategory}: CategoryProps) => {
 
     const handleChange = (category : string) => {
-        setSelected(category);
+        setSelectedCategory([category]);
+
     };
+    {/** for multi-select checkbox
+     const handleChange = (category: string) => {
+        setSelectedCategory((prev) => {
+            if (prev.includes(category)) {
+                return prev.filter((c) => c !== category); // remove
+            }
+            return [...prev, category]; // add
+        });
+     };
+     **/}
 
     return (
         <aside className="lg:col-span-3 lg:sticky lg:top-20 self-start">
@@ -45,15 +58,15 @@ const Sidebar = () => {
                                 <label className="flex items-center gap-3 cursor-pointer select-none">
                                     <input type="checkbox" value="all"
                                            className="category-filter h-4.5 w-4.5 rounded-md border border-slate-200 accent-blue-600 cursor-pointer"
-                                           checked={selected === item.name}
+                                           checked={ selectedCategory.includes(item.name) }
                                            onChange={() => handleChange(item.name)}
                                     />
                                     <span className="flex-1 text-sm text-slate-700">
-                                {item.name}
+                                        {item.name}
                                         <span className="text-slate-400 font-normal">
-                                    ({item.count})
-                                </span>
-                            </span>
+                                            ({item.count})
+                                        </span>
+                                    </span>
                                 </label>
                             )
                         }))}

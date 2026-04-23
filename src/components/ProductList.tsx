@@ -2,7 +2,7 @@ import type {FilterState, ProductItem} from "../product.ts";
 import ProductCard from "./ProductCard.tsx";
 
 
-const ProductList = ({searchTerm}:FilterState) => {
+const ProductList = ({searchTerm, selectedCategory}:FilterState) => {
 
     const productList : ProductItem[] = [
         {
@@ -79,7 +79,10 @@ const ProductList = ({searchTerm}:FilterState) => {
 
         const searchMatches = product.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-        return searchMatches;
+        const categoryMatches = selectedCategory.toString() === "All Products" ||
+            product.category === selectedCategory.toString();
+
+        return searchMatches && categoryMatches;
     })
 
     return (

@@ -13,4 +13,5 @@ export type ProductItem = {
 
 export type FilterState = {
     searchTerm: string;
+    selectedCategory: string[];
 }
