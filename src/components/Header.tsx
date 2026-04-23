@@ -1,5 +1,4 @@
 import {Package, Search, ShoppingCart, User} from "lucide-react";
-import type {FilterState} from "../product.ts";
 
 type NavItem = {
     label: string;
@@ -12,8 +11,12 @@ const navItems: NavItem[] = [
     {label: "Sale", href: "#"},
 ]
 
+export type HeaderProps = {
+    searchTerm: string;
+    setSearchTerm: (value:string)=> void;
+}
 
-const Header = ({searchTerm, setSearchTerm}:FilterState) => {
+const Header = ({searchTerm, setSearchTerm}:HeaderProps) => {
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);

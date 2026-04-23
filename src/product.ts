@@ -13,5 +13,4 @@ export type ProductItem = {
 
 export type FilterState = {
     searchTerm: string;
-    setSearchTerm: (value:string)=> void;
 }
