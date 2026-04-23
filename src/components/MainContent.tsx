@@ -1,11 +1,14 @@
 import Sidebar from "./Sidebar.tsx";
 import ProductSection from "./ProductSection.tsx";
-import type {FilterState} from "../product.ts";
 import {useState} from "react";
+import * as React from "react";
 
+type MainContentProps = {
+    searchTerm: string
+    setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
 
-
-const MainContent = ({searchTerm}:FilterState) => {
+const MainContent = ({searchTerm, setCartCount}:MainContentProps) => {
 
     const [selectedCategory, setSelectedCategory] = useState<string[]>(["All Products"]);
 
@@ -20,6 +23,7 @@ const MainContent = ({searchTerm}:FilterState) => {
                     <ProductSection
                         searchTerm={searchTerm}
                         selectedCategory={selectedCategory}
+                        setCartCount={setCartCount}
                     />
                 </div>
             </main>

@@ -1,8 +1,8 @@
-import type {FilterState, ProductItem} from "../product.ts";
+import type {ProductItem, ProductProps} from "../product.ts";
 import ProductCard from "./ProductCard.tsx";
 
 
-const ProductList = ({searchTerm, selectedCategory}:FilterState) => {
+const ProductList = ({searchTerm, selectedCategory, setCartCount}:ProductProps) => {
 
     const productList : ProductItem[] = [
         {
@@ -93,7 +93,7 @@ const ProductList = ({searchTerm, selectedCategory}:FilterState) => {
                 </div>
             ) : (
                 filteredProducts.map((product) => (
-                    <ProductCard key = {product.id} {...product} />
+                    <ProductCard key = {product.id} product={product} setCartCount={setCartCount}  />
                 ))
             )}
         </div>

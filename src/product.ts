@@ -1,3 +1,5 @@
+import * as React from "react";
+
 export type ProductItem = {
     id: number;
     image: string;
@@ -11,7 +13,8 @@ export type ProductItem = {
     status: string;
 };
 
-export type FilterState = {
+export type ProductProps = {
     searchTerm: string;
-    selectedCategory: string[];
+    selectedCategory: string[]
+    setCartCount: React.Dispatch<React.SetStateAction<number>>;
 }

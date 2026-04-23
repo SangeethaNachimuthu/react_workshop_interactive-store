@@ -1,8 +1,13 @@
 import {Eye, Heart, Plus, Star} from "lucide-react";
 import type {ProductItem} from "../product.ts";
+import * as React from "react";
 
+type ProductCardProps = {
+    product: ProductItem;
+    setCartCount: React.Dispatch<React.SetStateAction<number>>;
+}
 
-const ProductCard = (product : ProductItem) => {
+const ProductCard = ({product, setCartCount} : ProductCardProps) => {
     //Destructing (Instead of using product.name, we can use name.)
     const {
         image,
@@ -15,6 +20,11 @@ const ProductCard = (product : ProductItem) => {
         finalPrice,
         status
     } = product;
+
+
+    const handleAddToCart = () => {
+        setCartCount((prev) => prev + 1);
+    }
 
     return (
         <article className="border border-slate-200 rounded-[1.25rem] bg-white p-3
@@ -102,6 +112,7 @@ const ProductCard = (product : ProductItem) => {
                             }`}
                             aria-label="Add to cart"
                             disabled={!inStock}
+                            onClick={handleAddToCart}
                     >
                         {inStock ? "Add to Cart" : "Notify Me"}
                     </button>

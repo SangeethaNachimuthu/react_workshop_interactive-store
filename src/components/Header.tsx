@@ -11,12 +11,13 @@ const navItems: NavItem[] = [
     {label: "Sale", href: "#"},
 ]
 
-export type HeaderProps = {
+type HeaderProps = {
     searchTerm: string;
     setSearchTerm: (value:string)=> void;
+    cartCount: number;
 }
 
-const Header = ({searchTerm, setSearchTerm}:HeaderProps) => {
+const Header = ({searchTerm, setSearchTerm, cartCount}:HeaderProps) => {
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
@@ -79,8 +80,8 @@ const Header = ({searchTerm, setSearchTerm}:HeaderProps) => {
                         >
                             <ShoppingCart size={19}/>
                             {/** Cart Count Badge **/}
-                            <span id="cart-count" className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm hidden">
-                                0
+                            <span id="cart-count" className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm ">
+                                {cartCount}
                             </span>
                         </button>
 

@@ -7,11 +7,12 @@ import {useState} from "react";
 const App = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
+    const [cartCount, setCartCount] = useState(0);
 
     return (
         <div>
-          <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          <MainContent searchTerm={searchTerm} />
+          <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} cartCount={cartCount} />
+          <MainContent searchTerm={searchTerm} setCartCount={setCartCount} />
           <Newsletter />
           <Footer />
         </div>
